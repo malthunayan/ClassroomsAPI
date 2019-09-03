@@ -27,7 +27,7 @@ def classroom_create(request):
 		if form.is_valid():
 			form.save()
 			messages.success(request, "Successfully Created!")
-			return redirect('classroom-list')
+			return redirect('classroom:list')
 		print (form.errors)
 	context = {
 	"form": form,
@@ -43,7 +43,7 @@ def classroom_update(request, classroom_id):
 		if form.is_valid():
 			form.save()
 			messages.success(request, "Successfully Edited!")
-			return redirect('classroom-list')
+			return redirect('classroom:list')
 		print (form.errors)
 	context = {
 	"form": form,
@@ -55,4 +55,4 @@ def classroom_update(request, classroom_id):
 def classroom_delete(request, classroom_id):
 	Classroom.objects.get(id=classroom_id).delete()
 	messages.success(request, "Successfully Deleted!")
-	return redirect('classroom-list')
+	return redirect('classroom:list')
